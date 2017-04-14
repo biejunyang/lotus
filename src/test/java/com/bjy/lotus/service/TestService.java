@@ -1,4 +1,4 @@
-package com.bjy.lotus.common.web.service;
+package com.bjy.lotus.service;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TestService implements ApplicationContextAware{
-	private ApplicationContext appCtx;
+	private ApplicationContext applicationContext;
 	
 	
 	public String sayHello(String name){
-		System.out.println(appCtx);
 		return "hello"+name;
 	}
 	
@@ -19,7 +18,13 @@ public class TestService implements ApplicationContextAware{
 	
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-		this.appCtx=applicationContext;
+		this.applicationContext=applicationContext;
+	}
+
+
+
+	public ApplicationContext getApplicationContext() {
+		return applicationContext;
 	}
 	
 }

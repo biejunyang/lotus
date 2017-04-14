@@ -1,5 +1,6 @@
 package com.bjy.lotus.common.web;
 
+import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -7,20 +8,37 @@ import javax.servlet.ServletRegistration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
+
+import com.bjy.lotus.common.web.configuration.AppConfiguration;
+import com.bjy.lotus.common.web.configuration.MVCConfiguration;
 
 public class WebConfigInitializer implements WebApplicationInitializer{
 	
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		System.out.println("start laod configuration...................");
-		//º”‘ÿspringmvc≈‰÷√
-		initializeSpringMVCConfig(servletContext);
+		String ctx=servletContext.getContextPath();
+		if(ctx.endsWith("/")){
+			ctx=ctx.substring(0, ctx.lastIndexOf("/"));
+		}
+		servletContext.setAttribute("ctx", ctx);
 		
-		//º”‘ÿspring»´æ÷≈‰∫œ
+		/**
+		 * Ê∑ªÂä†ÁºñÁ†ÅËΩ¨Êç¢ËøáÊª§Âô®
+		 */
+		FilterRegistration.Dynamic filterRegistration=servletContext.addFilter("CharacterEncodingFilter", 
+				new CharacterEncodingFilter("utf-8", true));
+		filterRegistration.addMappingForUrlPatterns(null, false, "/*");
+		filterRegistration.setAsyncSupported(true);
+		
+		
+		
+		//ÂàùÂßãÂåñSpringÂÖ®Â±Ä‰∏ä‰∏ãÊñá
 		initializeSpringConfig(servletContext);
-		
-		System.out.println("end laod configuration...................");
+				
+		//ÂàùÂßãÂåñSpring MVC ‰∏ä‰∏ãÊñá
+		initializeSpringMVCConfig(servletContext);
 	}
 	
 	
