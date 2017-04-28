@@ -10,10 +10,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.bjy.lotus.domain.DependsOnExoticType;
 import com.bjy.lotus.domain.Foo;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes={TestConfiguration.class})
 @ActiveProfiles("test")
-public class PropertyEditorTest {
+public class AppTest {
 	
 	@Autowired
 	private Foo foo;

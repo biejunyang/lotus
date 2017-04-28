@@ -14,7 +14,8 @@ public class Foo {
 	@Value("20")
 	private int age;
 	
-	@Value("2015-10-15 15:15:15")
+//	@DateTimeFormat(iso=ISO.DATE_TIME, pattern="yyyy-MM-dd HH:mm:ss")
+//	@Value("2015-10-15 15:15:15")
 	private Date birthday;
 	
 	

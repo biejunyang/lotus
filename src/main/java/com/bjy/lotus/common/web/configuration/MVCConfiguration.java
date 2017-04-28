@@ -7,13 +7,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerView;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
+
+import com.bjy.lotus.common.web.MyWebDataBindingInitializer;
 
 /**
  * Spring Web MVC Context Configuration
@@ -21,16 +24,30 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
  *
  */
 @Configuration
-@EnableWebMvc
+//@EnableWebMvc
 @ComponentScan(basePackages="com.bjy.lotus", useDefaultFilters=false, 
 	includeFilters=@ComponentScan.Filter(Controller.class))
 @PropertySources({@PropertySource("classpath:/application.properties")})
-public class MVCConfiguration extends WebMvcConfigurerAdapter{
+public class MVCConfiguration extends WebMvcConfigurationSupport{
 
 	@Autowired
 	private Environment env;
 	
+	@Override
+	public void addFormatters(FormatterRegistry registry) {
+//		registry.addFormatterForFieldAnnotation(new DateTimeFormatAnnotationFormatterFactory());
+	}
 	
+	
+	
+	@Override
+	protected ConfigurableWebBindingInitializer getConfigurableWebBindingInitializer() {
+		ConfigurableWebBindingInitializer initializer = new MyWebDataBindingInitializer();
+		initializer.setConversionService(mvcConversionService());
+		initializer.setValidator(mvcValidator());
+		initializer.setMessageCodesResolver(getMessageCodesResolver());
+		return initializer;
+	}
 	
 	/**
 	 * JSP视图解析器

@@ -9,19 +9,23 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$.ajaxSetup({  
+		/* $.ajaxSetup({  
 	        contentType : 'application/json'  
 	    });
 		$.post('${ctx}/hello',"{name:'张三'}", function(){
 			
-		});
+		}); */
 	});
 </script>
 </head>
 <body>
 <h1>hello, world, ${name }</h1>
-<form action="${ctx}/hello" method="post">
-	<input name="name" value="李四">
+<form action="${ctx}/savePerson" method="post">
+	<input name="name" value=""><br/>
+	<input name="age" value=""><br/>
+	<input name="sex" value=""><br/>
+	<input name="weight" value=""><br/>
+	<input name="birthday" value=""><br/>
 	<input type="submit" value="submit">
 </form>
 </body>

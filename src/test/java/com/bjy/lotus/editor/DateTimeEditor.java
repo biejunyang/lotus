@@ -18,6 +18,7 @@ public class DateTimeEditor extends PropertyEditorSupport{
 			setValue(null);
 		else{
 			try {
+				System.out.println("Date Editor performed!!!!");
 				setValue(formatter.parse(text));
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block

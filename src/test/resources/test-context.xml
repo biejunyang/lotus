@@ -2,18 +2,28 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd 
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
 
-	<!-- <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
-		<property name="customEditors">
-			<map>
-				<entry key="java.lang.String" value="com.bjy.lotus.editor.UpStringEditor"></entry>
-				<entry key="com.bjy.lotus.domain.ExoticType" value="com.bjy.lotus.editor.ExoticTypeEditor"></entry>
-			</map>
-		</property>
+	<!-- <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer"> 
+		<property name="customEditors"> <map> <entry key="java.lang.String" value="com.bjy.lotus.editor.UpStringEditor"></entry> 
+		<entry key="com.bjy.lotus.domain.ExoticType" value="com.bjy.lotus.editor.ExoticTypeEditor"></entry> 
+		</map> </property> </bean> -->
+
+	<!-- <bean name="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean"> 
+		<property name="converters"> <set> <bean class="com.bjy.lotus.converter.DateConverter"> 
+		<constructor-arg name="dateFormat" value="yyyy-MM-dd HH:mm:ss"/> </bean> 
+		</set> </property> </bean> -->
+
+	<!-- <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name = converters "></property>
+		<property name="formatters"></property>
 	</bean> -->
 </beans>
