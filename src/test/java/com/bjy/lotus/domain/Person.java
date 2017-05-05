@@ -1,6 +1,7 @@
 package com.bjy.lotus.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -14,6 +15,9 @@ public class Person {
 	private Sex sex;
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date startTime;
+	
+	private List<String> enjoys;
+	private List<Foo> foos;
 	
 	public String getName() {
 		return name;
@@ -56,9 +60,27 @@ public class Person {
 	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
+	
+	
+	
+	public List<String> getEnjoys() {
+		return enjoys;
+	}
+	public void setEnjoys(List<String> enjoys) {
+		this.enjoys = enjoys;
+	}
+	
+	
+	public List<Foo> getFoos() {
+		return foos;
+	}
+	public void setFoos(List<Foo> foos) {
+		this.foos = foos;
+	}
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "name:"+name+", age:"+age+", sex:"+sex+", weight:"+weight+", birthday:"+birthday;
 	}
+	
 }

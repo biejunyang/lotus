@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<input name="foos[0].name">
+	<input name="foos[0].age">
+	<input name="foos[1].name">
+	<input name="foos[1].age">
+	<input name="foos[2].name">
+	<input name="foos[2].age">
 </body>
 </html>
