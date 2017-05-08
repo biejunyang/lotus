@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
+import com.bjy.lotus.domain.Name;
 import com.bjy.lotus.domain.Student;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -45,7 +46,8 @@ public class JacksonTest {
 		// objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
 
 		Student student = new Student(1, "张三", 22, new Date(), 50.12, new Timestamp(System.currentTimeMillis()));
-
+		student.setEname(new Name("zhang", "san"));
+		
 		// 序列化pojo对象到某一个输出流中
 		objectMapper.writeValue(System.out, student);
 

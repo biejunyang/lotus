@@ -4,17 +4,32 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonUnwrapped;
+
+@JsonAutoDetect(fieldVisibility=Visibility.ANY)
 public class Student {
 
 	private Integer id;
 	private String name;
 	private Integer age;
+	
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private Date birthday;
 	private Double weight;
+	
+	@JsonProperty("start-time")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Timestamp startTime;
 	private Sex sex;
 	private List<String> enjoyes;
 	private List<Cource> cources;
+	
+	@JsonUnwrapped
+	private Name ename;
 	
 	public Student() {
 		// TODO Auto-generated constructor stub
@@ -88,21 +103,6 @@ public class Student {
 		this.enjoyes = enjoyes;
 	}
 	
-
-
-	
-	
-	
-
-
-
-	@Override
-	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", birthday=" + birthday + ", weight=" + weight
-				+ ", startTime=" + startTime + ", sex=" + sex + ", enjoyes=" + enjoyes + ", cources=" + cources + "]";
-	}
-
-
 	public List<Cource> getCources() {
 		return cources;
 	}
@@ -111,6 +111,37 @@ public class Student {
 	public void setCources(List<Cource> cources) {
 		this.cources = cources;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", birthday=" + birthday + ", weight=" + weight
+				+ ", startTime=" + startTime + ", sex=" + sex + ", enjoyes=" + enjoyes + ", cources=" + cources
+				+ ", ename=" + ename + "]";
+	}
+
+
+	
+
+
+
+
+
+
+
+
+
+	public Name getEname() {
+		return ename;
+	}
+
+
+	public void setEname(Name ename) {
+		this.ename = ename;
+	}
+
+
+
 
 
 

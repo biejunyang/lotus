@@ -2,12 +2,14 @@
   "id" : 1,
   "name" : "张三",
   "age" : 22,
-  "birthday" : "2017-05-07 13:35:56",
+  "birthday" : "2017-05-07",
   "weight" : 50.12,
-  "startTime" : "2017-05-07 13:35:56",
+  "start-time" : "2017-05-07 13:35:56",
   "sex" : "MAN",
   "enjoyes":["篮球","足球","羽毛球"],
   "cources":[
   	{"id":1,"courceName":"语文"},{"id":2,"courceName":"数学"},{"id":3,"courceName":"化学"}
-  ]
+  ],
+  "firstName":"zhang",
+  "lastName":"san"
 }
