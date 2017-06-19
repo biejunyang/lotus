@@ -1,5 +1,7 @@
 package com.bjy.lotus.common.web.configuration;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -8,6 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -33,9 +36,19 @@ public class MVCConfiguration extends WebMvcConfigurationSupport{
 	@Autowired
 	private Environment env;
 	
+	
+	//添加自定义的转换器，和格式化器
 	@Override
 	public void addFormatters(FormatterRegistry registry) {
 //		registry.addFormatterForFieldAnnotation(new DateTimeFormatAnnotationFormatterFactory());
+	}
+	
+	
+	//添加自定义的HttpMesageConverter
+	@Override
+	protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		// TODO Auto-generated method stub
+		super.configureMessageConverters(converters);
 	}
 	
 	

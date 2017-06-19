@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Person {
 	private String name;
 	private String age;
@@ -13,7 +15,10 @@ public class Person {
 	private Date birthday;
 	private Float weight;
 	private Sex sex;
+	
+	
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date startTime;
 	
 	private List<String> enjoys;

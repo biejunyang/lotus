@@ -100,8 +100,7 @@ public class SystemContext {
 			}
 			return dir;
 		}else{
-//			throw new RuntimeException("请设置系统文件操作目录!");
-			return null;
+			throw new RuntimeException("请设置系统文件操作目录!");
 		}
 	}
 	
