@@ -13,6 +13,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -96,6 +97,14 @@ public class MVCConfiguration extends WebMvcConfigurationSupport{
 	}
 	
 	
+	/**
+	 * 映射静态资源文件
+	 */
+	@Override
+	protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/assets/");
+		registry.addResourceHandler("/assets/**").addResourceLocations("/resources/");
+	}
  
 	
 }
